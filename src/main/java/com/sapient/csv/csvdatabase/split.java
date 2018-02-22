@@ -10,10 +10,10 @@ public class split {
 	String fileName;
 	StringBuffer base = new StringBuffer ("");
 	StringBuffer filter = new StringBuffer ("");
-	ArrayList<String> containing_functions=new ArrayList <String>();
+	ArrayList<String> containing_functions=new ArrayList <>();
 	ArrayList<String> logicalOperators =new ArrayList<String>();
 	ArrayList<String> selected_fields=new ArrayList<String>();
-    ArrayList<ArrayList<String>> where_fields = new ArrayList<ArrayList<String>>();//where condition
+    ArrayList<ArrayList<String>> where_fields = new ArrayList<>();
 
 	String order_by="";
 	String group_by="";
@@ -91,8 +91,6 @@ public class split {
 	}
 	
 	
-	
-	
 	int splitWhereFields() {
 		int temp=-1;
 		String k=filter.toString();
@@ -103,7 +101,7 @@ public class split {
 			int curr=prev;
 			for(temp=prev;;temp++) {
 				if( temp == arr.length || arr[temp].equals("order") || arr[temp].equals("group")) {
-					ArrayList<String> arr1=new ArrayList<String>();
+					ArrayList<String> arr1=new ArrayList<>();
 					arr1.add(arr[prev]);
 					arr1.add(arr[prev+1]);
 					String s = "";
@@ -114,7 +112,7 @@ public class split {
 					break;
 				}
 				if(arr[temp].equals("and") || arr[temp].equals("or") ) {
-					ArrayList<String> arr1=new ArrayList<String>();
+					ArrayList<String> arr1=new ArrayList<>();
 					arr1.add(arr[prev]);
 					arr1.add(arr[prev+1]);
 					String s = "";
@@ -129,7 +127,7 @@ public class split {
 				}	
 			}
 		}
-		System.out.println(where_fields);
+		//System.out.println(where_fields);
 		return 1;
 	}
 	

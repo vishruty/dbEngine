@@ -19,13 +19,9 @@ public class main {
 			System.out.println(part);
 		}
 		
-		String fileName=obj.splitFileName(arr);
-		
+		String fileName=obj.splitFileName(arr);	
 		StringBuffer basePart = obj.splitBasePart(arr);
-		
 		StringBuffer filterPart = obj.splitFilterPart(arr);
-		
-		
 		ArrayList<String> logicalOperators=obj.splitLogicalOperators(arr);
 		
 		ArrayList<String> selectedFields = obj.splitSelectedFields(arr);
@@ -42,41 +38,30 @@ public class main {
 		read readObj=new read();
 		LinkedHashMap<String,ArrayList<Object>> map = readObj.readFile();
         int row=readObj.getHeader();
-        
          
-       /* queryExecute q = new queryExecute(selectedFields , map, row, obj.where_fields, obj.logicalOperators, obj.order_by, obj.containing_functions,obj.group_by);
-        q.Matrix();
+        queryExecute execute = new queryExecute(selectedFields , map,  obj.where_fields, obj.logicalOperators, obj.order_by, obj.containing_functions,obj.group_by, row);
+        execute.matrixPopulate();
+        
         if(obj.where_fields.size() !=0 && obj.order_by.length() !=0) {
-       	 q.exWhere();
-       	 q.orderBy();
-       	 if(obj.group_by.length() !=0)
-                q.group();
-       	 else
-       	    q.colfeild();
+       	 execute.whereExecute();
+       	 execute.orderByExecute();
+       	 execute.displaySelectedFields();
         }
         else if(obj.where_fields.size() !=0 || obj.order_by.length() !=0) {
        	 if(obj.where_fields.size() !=0) {
-       		 q.exWhere();
-       		 if(obj.group_by.length() !=0)
-                    q.group();
-       		 else
-       		     q.colfeild();
+       		 execute.whereExecute();
+       		 execute.displaySelectedFields();
        	 }
+        
        	 else {
-       		 q.orderBy();
-       		 if(obj.group_by.length() !=0)
-                    q.group();
-       		 else
-       		      q.colfeild();
+       		 execute.orderByExecute();
+       		 execute.displaySelectedFields();
        	 }
         }
-        else if(obj.group_by.length()==0 && obj.containing_functions.size()!=0)
-           q.aggregate();
-        else if(obj.group_by.length() !=0)
-            q.group();
+       
         else
-       	 q.colfeild();
-*/
+       	 execute.displaySelectedFields();
+
 	}	
 		
 
